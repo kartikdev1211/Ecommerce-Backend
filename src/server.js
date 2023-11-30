@@ -22,4 +22,4 @@ app.use("/api/cart",cartRoutes);
 const orderRoutes=require("./routes/order_routes");
 app.use("/api/order",orderRoutes);
 const PORT=5000;
-app.listen(PORT,()=>console.log('Server started at port number: ${PORT}'));
+app.listen(PORT,()=>console.log('Server started at port number: '+PORT));

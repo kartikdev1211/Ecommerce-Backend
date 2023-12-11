@@ -26,6 +26,23 @@ const userController={
         }catch(ex){
             return res.json({success:false,message:ex});
         }
+    },
+    updateUser:async function(req,res){
+        try {
+            const userId=req.params.id;
+            const updateData=req.body; 
+            const updatedUser=await userModel.findOneAndUpdate(
+                {_id:userId},
+                updateData,
+                {new:true},
+            );  
+            if(!updatedUser){
+                throw "User not found";
+            }   
+            return res.json({success:true,data:updatedUser,message:"User updated!"});
+        } catch (error) {
+            return res.json({success:false,message:error});
+        }
     }
 };
 module.exports=userController;
